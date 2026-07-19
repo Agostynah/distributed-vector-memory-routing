@@ -19,13 +19,28 @@ We propose four routing strategies that reduce communication costs in distribute
 - **KMeans outperforms random partitioning** by 8-12%
 - **Adaptive routing matches global recall** with sub-linear communication
 
+### Communication-Quality Tradeoff
+
+![Pareto Frontier](paper/figure2_pareto_frontier(qualityvsCommunication).png)
+
+Adaptive strategies achieve comparable recall with significantly less communication than broadcasting.
+
+### Recall vs Number of Partitions
+
+![Recall vs Partitions](paper/figure1_retrieval_qualityVsPartitionCount.png)
+
+While local-only search degrades with more partitions, adaptive strategies maintain stable recall.
+
 ## Repository Structure
 
 ```
 ├── paper/
 │   ├── main.tex                    # LaTeX source
 │   ├── main.pdf                    # Compiled paper
-│   └── figures/                    # Publication figures
+│   ├── figure1_*.png               # Publication figures
+│   ├── figure2_*.png
+│   ├── figure3_*.png
+│   └── figure4_*.png
 ├── notebook/
 │   └── dbpedia14_distributed_memory.ipynb  # Kaggle notebook
 ├── README.md
