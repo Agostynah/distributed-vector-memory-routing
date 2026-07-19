@@ -33,6 +33,17 @@ Adaptive strategies achieve comparable recall with significantly less communicat
 
 While local-only search degrades with more partitions, adaptive strategies maintain stable recall.
 
+## Results (K=16, 100 queries)
+
+| Strategy | Recall@10 | Partitions Contacted | Communication Savings |
+|----------|-----------|---------------------|----------------------|
+| Global (baseline) | 0.939 | 16/16 | 0% |
+| Local (baseline) | 0.826 | 1/16 | 93.8% |
+| Threshold | 0.939 | 9.3/16 | 42% |
+| Top-N | 0.923 | 4/16 | 75% |
+| Progressive | 0.939 | 9.3/16 | 42% |
+| Budgeted | 0.940 | 8/16 | 50% |
+
 ## Repository Structure
 
 ```
@@ -94,4 +105,5 @@ jupyter notebook dbpedia14_distributed_memory.ipynb
 ## Links
 
 - [Paper on Zenodo](https://doi.org/10.5281/zenodo.21445007)
+- [Paper on arXiv](https://arxiv.org/abs/[YOUR_ARXIV_ID])
 - [Kaggle Notebook](https://www.kaggle.com/)
