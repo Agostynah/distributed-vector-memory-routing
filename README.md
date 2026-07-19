@@ -1,5 +1,7 @@
 # Communication-Efficient Distributed Vector Memory
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21445007.svg)](https://doi.org/10.5281/zenodo.21445007)
+
 **Investigating Adaptive Routing Across Partitioned Semantic Memories**
 
 This repository contains the code and data for our paper on adaptive routing strategies for distributed vector databases.
