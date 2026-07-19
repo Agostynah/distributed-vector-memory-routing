@@ -1,6 +1,6 @@
 # Communication-Efficient Distributed Vector Memory
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21445007.svg)](https://doi.org/10.5281/zenodo.21445007)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21445006.svg)](https://doi.org/10.5281/zenodo.21445006)
 
 **Investigating Adaptive Routing Across Partitioned Semantic Memories**
 
@@ -104,6 +104,6 @@ jupyter notebook dbpedia14_distributed_memory.ipynb
 
 ## Links
 
-- [Paper on Zenodo](https://doi.org/10.5281/zenodo.21445007)
+- [Paper on Zenodo](https://doi.org/10.5281/zenodo.21445006)
 - [Paper on arXiv](https://arxiv.org/abs/[YOUR_ARXIV_ID])
 - [Kaggle Notebook](https://www.kaggle.com/)
