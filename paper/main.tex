@@ -36,7 +36,7 @@ Distributed vector databases partition embeddings across multiple servers to ach
 
 \section{Introduction}
 
-Modern vector databases (Milvus, Weaviate, Qdrant) achieve scalability by partitioning embeddings across multiple servers~\cite{distvs,fedvs}. However, querying all partitions---a broadcast---incurs communication costs that grow linearly with the number of partitions $K$, creating a fundamental tension between retrieval quality and system efficiency.
+Modern vector databases (Milvus, Weaviate, Qdrant) achieve scalability by partitioning embeddings across multiple servers~\cite{pyramid,fedvs}. However, querying all partitions---a broadcast---incurs communication costs that grow linearly with the number of partitions $K$, creating a fundamental tension between retrieval quality and system efficiency.
 
 Consider a distributed semantic memory with $K$ independent partitions, each containing a subset of the document embeddings. A broadcast query contacts all $K$ partitions, achieving maximum recall but requiring $O(K)$ communication. Conversely, querying only the nearest partition reduces communication to $O(1)$ but risks missing relevant documents stored in other partitions.
 
@@ -63,7 +63,7 @@ We propose four adaptive routing strategies that dynamically determine which par
 
 \subsection{Distributed Vector Search}
 
-Distributed vector search systems partition embeddings across multiple nodes to achieve horizontal scalability. FedVS~\cite{fedvs} proposes a federated approach to vector search with communication-efficient protocols. DistVS~\cite{distvs} provides a framework for distributed vector search addressing challenges of data distribution and query routing. d-HNSW~\cite{dhnsw} extends the Hierarchical Navigable Small World algorithm to distributed settings, maintaining graph connectivity across partitions.
+Distributed vector search systems partition embeddings across multiple nodes to achieve horizontal scalability. FedVS~\cite{fedvs} proposes a federated approach to vector search with communication-efficient protocols. Pyramid~\cite{pyramid} provides a framework for distributed similarity search with hierarchical partitioning. d-HNSW~\cite{dhnsw} extends the Hierarchical Navigable Small World algorithm to distributed settings, maintaining graph connectivity across partitions.
 
 \subsection{Adaptive Routing}
 
@@ -75,7 +75,7 @@ Vector quantization reduces memory footprint and computational cost. TurboQuant~
 
 \subsection{Hierarchical Index Structures}
 
-HNSW~\cite{hnsw} provides efficient approximate nearest neighbor search through hierarchical graph navigation. Pyramid~\cite{pyramid} proposes pyramid-based partitioning for distributed search. RED-ANNS~\cite{redanns} introduces range-based approaches to distributed approximate nearest neighbor search.
+HNSW~\cite{hnsw} provides efficient approximate nearest neighbor search through hierarchical graph navigation. Pyramid~\cite{pyramid} proposes pyramid-based partitioning for distributed search, assigning queries to only relevant sub-datasets for high throughput.
 
 \section{Methodology}
 
@@ -301,6 +301,10 @@ We presented four adaptive routing strategies for distributed vector memory that
 
 \textbf{Future work:} We plan to investigate hierarchical scaling (distribution of distributions) to achieve sub-linear communication growth, evaluate performance on production-scale datasets with natural semantic clusters, and develop adaptive threshold tuning mechanisms.
 
+\subsection{Connection to Probabilistic Computing}
+
+Our confidence estimation formula is inspired by the eta ratio ($\eta = f_{\text{comm}} / f_{\text{p-bit}}$) from probabilistic computing~\cite{aadit2026programmable}, which quantifies the tradeoff between communication frequency and local computation in partitioned stochastic systems. Aadit et al.~demonstrate that above a topology-dependent threshold, a distributed probabilistic machine matches a monolithic reference, while below it, accuracy degrades as a power law. Our coverage term $\frac{n_{\text{contacted}}}{n_{\text{total}}}$ plays an analogous role: it penalizes low partition contact, preventing premature termination in the same way that insufficient boundary refresh degrades the distributed sampler. This connection suggests that our adaptive routing strategies may generalize beyond vector search to other partitioned stochastic systems.
+
 \bibliographystyle{plain}
 
 \begin{thebibliography}{10}
@@ -321,49 +325,44 @@ Nils Reimers and Iryna Gurevych.
 \newblock In {\em Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing}, pages 3982--3992, 2019.
 
 \bibitem{turboquant}
-TurboQuant Authors.
-\newblock TurboQuant: Data-Oblivious Quantizer with Near-Optimal Distortion.
+Amir Zandieh, {et al.}
+\newblock TurboQuant: Online Vector Quantization with Near-optimal Distortion Rate.
 \newblock In {\em International Conference on Learning Representations (ICLR)}, 2026.
 
-\bibitem{distvs}
-Distributed Vector Search Authors.
-\newblock Distributed Vector Search: Challenges and Solutions.
-\newblock {\em Technical Report}, 2024.
-
 \bibitem{fedvs}
-Federated Vector Search Authors.
-\newblock FedVS: Towards Communication-Efficient Federated Vector Search.
-\newblock {\em Technical Report}, 2024.
+Zeheng Fan, Yuxiang Zeng, Zhuanglin Zheng, and Yongxin Tong.
+\newblock FedVS: Towards Federated Vector Similarity Search with Filters.
+\newblock In {\em Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining}, 2025.
 
 \bibitem{dhnsw}
-Distributed HNSW Authors.
-\newblock Distributed HNSW: Scaling Approximate Nearest Neighbor Search.
-\newblock {\em Technical Report}, 2024.
+Fei Fang, Yi Liu, and Chen Qian.
+\newblock d-HNSW: A High-performance Vector Search Engine on Disaggregated Memory.
+\newblock {\em Proceedings of the ACM on Measurement and Analysis of Computing Systems}, 10(2):1--28, 2026.
 
 \bibitem{shardmemo}
-ShardMemo Authors.
-\newblock ShardMemo: Shard-Based Memory with Probe Budget.
-\newblock {\em Technical Report}, 2024.
+Yang Zhao, Chengxiao Dai, Yue Xiu, Mengying Kou, Yuliang Zheng, and Dusit Niyato.
+\newblock ShardMemo: Masked MoE Routing for Sharded Agentic LLM Memory.
+\newblock {\em arXiv preprint arXiv:2601.21545}, 2026.
 
 \bibitem{hyphaedb}
 HyphaeDB Authors.
-\newblock HyphaeDB: Graph-Based Neighbor Routing for Distributed Systems.
-\newblock {\em Technical Report}, 2024.
+\newblock HyphaeDB: A Living Knowledge Topology for Agent-First Memory Using HNSW Graph Structure as a Gossip-Based Communication Fabric.
+\newblock {\em arXiv preprint}, 2026.
 
 \bibitem{ragroute}
-RAGRoute Authors.
-\newblock RAGRoute: Routing for Retrieval-Augmented Generation Systems.
-\newblock {\em Technical Report}, 2024.
+Akash Dhasade, Rachid Guerraoui, Anne-Marie Kermarrec, Diana Petrescu, Rafael Pires, Mathis Randl, and Martijn de Vos.
+\newblock Efficient Federated Search for Retrieval-Augmented Generation using Lightweight Routing.
+\newblock In {\em Proceedings of the 5th Workshop on Machine Learning and Systems (EuroMLSys)}, 2025.
 
 \bibitem{pyramid}
-Pyramid Authors.
-\newblock Pyramid: Pyramid-Based Partitioning for Distributed Vector Search.
-\newblock {\em Technical Report}, 2024.
+Shiyuan Deng, Xiao Yan, Kelvin K. W. Ng, Chenyu Jiang, and James Cheng.
+\newblock Pyramid: A General Framework for Distributed Similarity Search on Large-scale Datasets.
+\newblock In {\em IEEE International Conference on Big Data}, pages 1066--1071, 2019.
 
-\bibitem{redanns}
-RED-ANNS Authors.
-\newblock RED-ANNS: Range-Efficient Distributed Approximate Nearest Neighbor Search.
-\newblock {\em Technical Report}, 2024.
+\bibitem{aadit2026programmable}
+Navid Anjum Aadit, Xiuqi Zhang, Shuvro Chowdhury, Kevin Callahan-Coray, Kyle Lee, Saleh Bunaiyan, Sanjay Seshan, Clayton Thomas, Jason Twigg, Andrew Seawright, Forrest Brewer, Tathagata Srimani, and Kerem Y. Camsari.
+\newblock Programmable Probabilistic Computer with 1,000,000 p-bits.
+\newblock {\em arXiv preprint arXiv:2606.25313}, 2026.
 
 \end{thebibliography}
 

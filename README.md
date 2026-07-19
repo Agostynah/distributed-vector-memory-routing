@@ -71,9 +71,10 @@ jupyter notebook dbpedia14_distributed_memory.ipynb
 
 ## License
 
-CC BY 4.0
+- **Code** (notebook, scripts): [MIT License](LICENSE)
+- **Paper and figures**: CC BY 4.0
 
 ## Links
 
-- [Paper on Zenodo](https://zenodo.org/record/[YOUR_DOI])
+- [Paper on Zenodo](https://doi.org/10.5281/zenodo.21445007)
 - [Kaggle Notebook](https://www.kaggle.com/)
