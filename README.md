@@ -105,5 +105,4 @@ jupyter notebook dbpedia14_distributed_memory.ipynb
 ## Links
 
 - [Paper on Zenodo](https://doi.org/10.5281/zenodo.21445006)
-- [Paper on arXiv](https://arxiv.org/abs/[YOUR_ARXIV_ID])
 - [Kaggle Notebook](https://www.kaggle.com/)
