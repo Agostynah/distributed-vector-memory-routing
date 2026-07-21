@@ -90,9 +90,9 @@ jupyter notebook dbpedia14_distributed_memory.ipynb
 ## Citation
 
 ```bibtex
-@article{[your_name]2026distributed,
+@article{[Agostina Silva]2026distributed,
   title={Communication-Efficient Distributed Vector Memory: Investigating Adaptive Routing Across Partitioned Semantic Memories},
-  author={[Your Name]},
+  author={[Agostina Silva]},
   year={2026}
 }
 ```
