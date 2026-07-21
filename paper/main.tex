@@ -19,9 +19,7 @@
 \title{Communication-Efficient Distributed Vector Memory:\\ Investigating Adaptive Routing Across Partitioned Semantic Memories}
 
 \author{
-  [Author Name]\\
-  [Affiliation]\\
-  [Email]\\
+  Agostina Silva
 }
 
 \date{}
@@ -158,9 +156,10 @@ Table~\ref{tab:main_results} presents the comprehensive results across all parti
 \caption{Comprehensive results across all partition counts and strategies. Recall@10, MRR, and NDCG@10 are averaged over 100 queries.}
 \label{tab:main_results}
 \small
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{ccrrrrrrr}
 \toprule
-\textbf{K} & \textbf{Strategy} & \textbf{Recall@10} & \textbf{MRR} & \textbf{NDCG@10} & \textbf{Part. Contacted} & \textbf{Comm Reduction (\%)} & \textbf{Avg Latency (ms)} & \textbf{Avg Confidence} \\
+\textbf{K} & \textbf{Strategy} & \textbf{Recall@10} & \textbf{MRR} & \textbf{NDCG@10} & \textbf{Part.\ Contacted} & \textbf{Comm.\ Reduc.\ (\%)} & \textbf{Avg Latency (ms)} & \textbf{Avg Conf.\ } \\
 \midrule
 \multirow{6}{*}{2}
 & Global (baseline) & 0.939 & 1.00 & 0.999 & 2.0 & 0.0 & 13.20 & 1.000 \\
@@ -194,7 +193,8 @@ Table~\ref{tab:main_results} presents the comprehensive results across all parti
 & Progressive & 0.939 & 1.00 & 0.999 & 9.3 & 41.6 & 9.03 & 0.523 \\
 & Budgeted & 0.940 & 1.00 & 0.999 & 8.0 & 50.0 & 7.29 & 0.450 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table*}
 
 \subsection{Key Findings}
@@ -227,17 +227,6 @@ Table~\ref{tab:kmeans_vs_random} compares semantic (KMeans) and random partition
 
 KMeans consistently outperforms random partitioning by 8--12\%, demonstrating that semantic coherence in partitions directly impacts routing effectiveness.
 
-\subsection{Communication-Quality Tradeoff}
-
-Figure~\ref{fig:pareto} illustrates the Pareto frontier between communication cost and retrieval quality. Adaptive strategies occupy the efficient frontier, achieving higher recall per unit of communication compared to both global and local baselines.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\linewidth]{figure2_pareto_frontier(qualityvsCommunication).png}
-    \caption{Pareto frontier: Communication cost vs Recall@10. Adaptive strategies achieve comparable recall with significantly less communication.}
-    \label{fig:pareto}
-\end{figure}
-
 \subsection{Scalability Analysis}
 
 Figure~\ref{fig:recall} shows recall across partition counts. While local-only search degrades with increasing $K$, adaptive strategies maintain stable recall, demonstrating robustness to partition count.
@@ -247,6 +236,17 @@ Figure~\ref{fig:recall} shows recall across partition counts. While local-only s
     \includegraphics[width=\linewidth]{figure1_retrieval_qualityVsPartitionCount.png}
     \caption{Recall@10 vs Number of Partitions. Adaptive strategies maintain stable recall while local-only degrades.}
     \label{fig:recall}
+\end{figure}
+
+\subsection{Communication-Quality Tradeoff}
+
+Figure~\ref{fig:pareto} illustrates the Pareto frontier between communication cost and retrieval quality. Adaptive strategies occupy the efficient frontier, achieving higher recall per unit of communication compared to both global and local baselines.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{figure2_pareto_frontier(qualityvsCommunication).png}
+    \caption{Pareto frontier: Communication cost vs Recall@10. Adaptive strategies achieve comparable recall with significantly less communication.}
+    \label{fig:pareto}
 \end{figure}
 
 \section{Discussion}

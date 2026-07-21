@@ -1,6 +1,9 @@
 # Communication-Efficient Distributed Vector Memory
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21445006.svg)](https://doi.org/10.5281/zenodo.21445006)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Kaggle](https://img.shields.io/badge/Kaggle-Notebook-blue.svg)](https://www.kaggle.com/code/datatalesbyagos/dvm-with-turbovec-dbpedia-14-experiment)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21446733.svg)](https://doi.org/10.5281/zenodo.21446733)
 
 **Investigating Adaptive Routing Across Partitioned Semantic Memories**
 
@@ -90,9 +93,9 @@ jupyter notebook dbpedia14_distributed_memory.ipynb
 ## Citation
 
 ```bibtex
-@article{[Agostina Silva]2026distributed,
+@article{silva2026distributed,
   title={Communication-Efficient Distributed Vector Memory: Investigating Adaptive Routing Across Partitioned Semantic Memories},
-  author={[Agostina Silva]},
+  author={Silva, Agostina},
   year={2026}
 }
 ```
@@ -101,8 +104,3 @@ jupyter notebook dbpedia14_distributed_memory.ipynb
 
 - **Code** (notebook, scripts): [MIT License](LICENSE)
 - **Paper and figures**: CC BY 4.0
-
-## Links
-
-- [Paper on Zenodo](https://doi.org/10.5281/zenodo.21445006)
-- [Kaggle Notebook](https://www.kaggle.com/)
